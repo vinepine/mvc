@@ -1,2 +1,3 @@
+![alt text](assets/images/readme.jpg)
+
 testing
-![alt text](public/img/background.jpg)
