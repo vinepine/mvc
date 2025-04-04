@@ -1,2 +1,2 @@
 testing
-![alt text](image.png)
+![alt text](app/public/img/background.jpg)
