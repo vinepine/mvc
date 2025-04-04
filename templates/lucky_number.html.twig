@@ -1,0 +1,15 @@
+{# templates/lucky_number.html.twig #}
+
+{% extends "base.html.twig" %}
+
+{% block title %}Magic number{% endblock %}
+
+{% block body %}
+<div class="main">
+    <h1>Magic</h1>
+    <h1>Lucky number: {{ number }} </h1>
+    {% if number == 7 %}
+        <img src="{{ asset('build/images/9.jpg')}}" alt="">
+    {% endif %}
+</div>
+{% endblock %}

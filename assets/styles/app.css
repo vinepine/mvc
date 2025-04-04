@@ -4,8 +4,8 @@
 header {
     height: 100px;
     border-bottom: 3px solid #cccc;
-
 }
+
 body {
 
     background: linear-gradient(to right, #99b0b3, #789599);
@@ -21,6 +21,21 @@ img {
 p {
     font-size: 20px;
     line-height: 1.4rem;
+}
+
+.main {
+    width: 80%;
+    max-width: 72rem;
+    margin: 0 auto;
+    background-color: rgb(171, 196, 171);
+    border-radius: 5px;
+    padding: 30px;
+    height: 100%;
+    min-height: calc(100vh - 460px)
+}
+
+.main h1 {
+    text-decoration: underline;
 }
 
 .profile img {
@@ -46,5 +61,13 @@ p {
     font-weight: bold;
     font-style: italic;
     color: rgb(247, 247, 248);
+}
+
+footer {
+    border-top: 3px solid #cccc;
+    width: 100%;
+    background-color: green;
+    height: 200px;
+    background: linear-gradient(to right, #114c53, #4e8991);
 }
 
