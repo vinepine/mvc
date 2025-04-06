@@ -27,7 +27,7 @@ class LuckyControllerTwig extends AbstractController
         return $this->render("report.html.twig");
     }
 
-    #[Route("/lucky/number/twig", name: "lucky_number")]
+    #[Route("/lucky", name: "lucky_number")]
     public function number(): Response
     {
         $number = random_int(0, 7);
