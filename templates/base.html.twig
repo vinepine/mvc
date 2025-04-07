@@ -10,7 +10,7 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
-            {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     
@@ -28,6 +28,8 @@
             </ul>
         </nav>
         {% block body %}{% endblock %}
-        <footer></footer>
+        <footer>
+            <div class="footer-content"><p>MVC</p><p>Vincent Persson</p></div>
+        </footer>
     </body>
 </html>
