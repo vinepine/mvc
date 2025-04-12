@@ -26,8 +26,6 @@ class DiceGameController extends AbstractController
         return $this->render('pig/home.html.twig', $data);
     }
 
-   
-
     #[Route("/game/pig/init", name: "pig_init_get", methods: ['GET'])]
     public function init(): Response
     {

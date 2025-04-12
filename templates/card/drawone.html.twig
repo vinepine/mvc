@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="main" style="text-align:center;">
+    <p>
+        <a href="{{ path('card_deck') }}">Cards</a>
+        <a href="{{ path('deck_shuffle') }}">Shuffle</a>
+        <a href="{{ path('draw_one') }}">Draw</a>
+    </p>
+    <p class="card-view">
+        {% for card in hand %}
+            {{ card.toString() }}
+        {% endfor %}
+    </p>
+    <p>Cards left in deck: {{ cardsLeft }}</p>
+</div>
+
+
+{% endblock %}
