@@ -1,11 +1,14 @@
 @import './navbar.css';
 @import './footer.css';
+@import './piggame.css';
+@import './flash.css';
 
 
 header {
     height: 100px;
     border-bottom: 3px solid #cccc;
     background-position: center;
+    background-size: cover;
 }
 
 body {
@@ -33,6 +36,7 @@ p {
     padding: 30px;
     padding-left: 70px;
     padding-right: 70px;
+    padding-bottom: -30px;
     height: 100%;
     min-height: calc(100vh - 460px)
 }

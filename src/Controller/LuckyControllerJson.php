@@ -6,8 +6,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-class LuckyControllerJson 
+class LuckyControllerJson
 {
     #[Route("/api/lucky/number", name: 'number')]
     public function jsonNumber(): Response

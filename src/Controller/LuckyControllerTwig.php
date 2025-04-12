@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyControllerTwig extends AbstractController
-{   
+{
     #[Route("/", name: "home")]
     public function home(): Response
     {
@@ -31,7 +31,7 @@ class LuckyControllerTwig extends AbstractController
     public function number(): Response
     {
         $number = random_int(0, 7);
-        
+
         $data = [
             'number' => $number
         ];
