@@ -1,8 +1,11 @@
 <?php
+
 namespace App\Dice;
+
 use App\Dice\Dice;
 
-class DiceGraphic extends dice {
+class DiceGraphic extends dice
+{
     private $representation = [
         '⚀',
         '⚁',
@@ -12,11 +15,13 @@ class DiceGraphic extends dice {
         '⚅',
     ];
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function getAsString(): string{
+    public function getAsString(): string
+    {
         return $this->representation[$this->value - 1];
     }
 }

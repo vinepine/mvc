@@ -9,10 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class SessionController extends AbstractController 
+class SessionController extends AbstractController
 {
     #[Route('/session', name: 'session')]
-    public function session(SessionInterface $session) {
+    public function session(SessionInterface $session)
+    {
 
         $session = $session->all();
 
@@ -24,7 +25,8 @@ class SessionController extends AbstractController
     }
 
     #[Route('/session/delete', name: 'delete_session')]
-    public function deleteSession(SessionInterface $session) {
+    public function deleteSession(SessionInterface $session)
+    {
         $session->clear();
 
         $this->addFlash('warning', 'Session was deleted');

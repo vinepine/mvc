@@ -1,6 +1,6 @@
 <?php
-namespace App\Controller;
 
+namespace App\Controller;
 
 use App\Card\DeckOfCards;
 use App\Card\CardHand;
@@ -14,16 +14,17 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class CardGameController extends AbstractController
 {
     #[Route('/card', name: 'card_land_page')]
-    public function cardStartPage() {
+    public function cardStartPage(): Response
+    {
 
-        
+
         return $this->render('card/home.html.twig');
     }
 
     #[Route('/card/deck', name: 'card_deck')]
     public function renderDeck(
         SessionInterface $session
-    ) {
+    ): Response {
         if ($session->get('deck')) {
             $deck = $session->get('deck');
         } else {
@@ -31,7 +32,7 @@ class CardGameController extends AbstractController
         }
 
         $deckList = $deck->getCardList();
-        
+
         ksort($deckList);
 
         $session->set('deck', $deck);
@@ -45,11 +46,11 @@ class CardGameController extends AbstractController
     #[Route('/card/deck/shuffle', name: 'deck_shuffle')]
     public function shuffleCards(
         SessionInterface $session
-    ) {
+    ): Response {
 
-        
+
         $deck = new DeckOfCards();
-        
+
 
         $deck->shuffleDeck();
         $shuffledList = $deck->getCardList();
@@ -66,7 +67,7 @@ class CardGameController extends AbstractController
     public function drawOne(
         SessionInterface $session,
         int $amount
-    ) {
+    ): Response {
 
         if ($session->get('deck')) {
             $deck = $session->get('deck');
@@ -77,7 +78,7 @@ class CardGameController extends AbstractController
         }
 
         $hand->takeCard($amount, $deck);
-        
+
         $current = $hand->getHand();
         $cardsLeft = $deck->cardsLeft();
 

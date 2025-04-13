@@ -1,27 +1,32 @@
 <?php
+
 namespace App\Dice;
 
 use App\Dice\Dice;
 
-class DiceHand{
-
+class DiceHand
+{
     private $hand = [];
 
-    public function add(Dice $die): void {
+    public function add(Dice $die): void
+    {
         $this->hand[] = $die;
     }
 
-    public function roll(): void {
-        foreach ( $this->hand as $die ) {
+    public function roll(): void
+    {
+        foreach ($this->hand as $die) {
             $die->roll();
         }
     }
 
-    public function getNumberOfDices(): int {
+    public function getNumberOfDices(): int
+    {
         return count($this->hand);
     }
 
-    public function getValues(): array {
+    public function getValues(): array
+    {
         $values = [];
 
         foreach ($this->hand as $die) {
@@ -31,13 +36,14 @@ class DiceHand{
         return $values;
     }
 
-    public function getString(): array {
+    public function getString(): array
+    {
         $values = [];
 
         foreach ($this->hand as $die) {
             $values[] = $die->getAsString();
         }
-        
+
         return $values;
     }
 }
