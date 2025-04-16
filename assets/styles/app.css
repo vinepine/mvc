@@ -3,6 +3,8 @@
 @import './piggame.css';
 @import './flash.css';
 @import './cardgame.css';
+@import './form.css';
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 
 header {
@@ -17,6 +19,7 @@ body {
     background: linear-gradient(to right, #99b0b3, #789599);
     background-size: cover;
     margin: 0 auto;
+    font-family: "Lato", sans-serif;
 }
 
 img {
@@ -25,8 +28,8 @@ img {
 }
 
 p {
-    font-size: 20px;
-    line-height: 1.4rem;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
 }
 
 .main {

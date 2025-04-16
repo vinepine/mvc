@@ -5,13 +5,29 @@
 {% block body %}
 <div class="main">
     <div class="profile">
-        <p>
-            <a href="{{ path('quote')}}">Shows random quotes</a> | 
-            <a href="{{ path('number')}}">Shows random number</a> | 
-            <a href="{{ path('api_deck') }}">Shows sorted Deck</a><br><br>
-            <a href="{{ path('api_shuffle')}}">Shows shuffled deck</a> | 
-            <a href="{{ path('api_draw')}}">Shows drawn cards </a>
-        </p>
+        <div class="form-wrapper">
+            <form method="GET" class="form">
+                <input type="submit" value="Show Qoutes"
+                    onClick="this.form.action='{{ path('quote')}}'">
+                <input type="submit" value="Show random number"
+                    onClick="this.form.action='{{path('number')}}'">
+                <input type="submit" value="Show deck" 
+                onClick="this.form.action='{{ path('api_deck') }}'">
+            </form>
+            <form method="POST" class="form">
+                <input type="submit" value="Shuffle Deck"
+                    onClick="this.form.action='{{ path('api_shuffle') }}'">
+                <input type="hidden" name="number" value="1">
+                <input type="submit" value="Draw one"
+                    onClick="this.form.action='{{ path('api_draw') }}'">
+            </form>
+
+            <form method="POST" class="form">
+                <input type="number" name="number" value="1" >
+                <input type="submit" value="Draw Card" 
+                onClick="this.form.action='{{ path('api_draw') }}'">
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}

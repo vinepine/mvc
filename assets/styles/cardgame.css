@@ -2,3 +2,14 @@
     font-size: 4rem;
     line-height: 4rem;
 }
+
+.card-uml {
+
+    max-width: 50%;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.card-uml img {
+    border-radius: 10px;
+}

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class DiceGameController extends AbstractController
@@ -36,10 +37,9 @@ class DiceGameController extends AbstractController
     public function initCallback(
         Request $request,
         SessionInterface $session
-    ): Response {
+    ): Response 
+    {
         $numDice = $request->request->get('num_dices');
-
-
 
         $hand = new DiceHand();
         for ($i = 0; $i < $numDice; $i++) {
@@ -59,13 +59,13 @@ class DiceGameController extends AbstractController
     public function play(
         SessionInterface $session
     ): Response {
-        $dicehand = $session->get('pig_dicehand');
+        $dicehand = $session->get("pig_dicehand");
 
         $data = [
             'pigDices' => $session->get('pig_dices'),
             'pigRound' => $session->get('pig_round'),
             'pigTotal' => $session->get('pig_total'),
-            'diceValues' => $dicehand->getString(),
+            'diceValues' => $dicehand->getString()
         ];
 
         return $this->render('pig/play.html.twig', $data);

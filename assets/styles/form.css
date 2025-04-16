@@ -1,0 +1,32 @@
+.forms-wrapper {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+
+.form input {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #357a37;
+}
+
+.form input[type="number"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 60px;
+}

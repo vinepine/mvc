@@ -3,5 +3,16 @@
 {% block body %}
 <div class="main" style="text-align:center;">
     {% include "card/nav/nav.html.twig" %}
+    <h1>Kortlek</h1>
+    <p style="text-align: left;">
+    Jag har fyra klasser Card, CardGraphic, CardHand och DeckOfCards.<br>
+    - Relationen mellan CardHand och DeckOfCards är en associationsrelation eftersom CardHand använder instanser av DeckOfCards.<br><br>
+    - Relationen mellan Card och CardGrahpic är arv.<br><br>
+    - Relationen mellan CardGraphic och DeckOfCards är komposition.
+    </p>
+    
+    <div class="card-uml">
+        <img src="{{ asset('build/images/card.jpg')}}" alt="">
+    </div>
 </div>
 {% endblock %}

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CardGameControllerJson
@@ -30,23 +31,20 @@ class CardGameControllerJson
         return $response;
     }
 
-    #[Route('/api/deck/shuffle', name: 'api_shuffle')]
+    #[Route('/api/deck/shuffle', name: 'api_shuffle', methods: ['POST'])]
     public function apiShuffle(
         SessionInterface $session
     ): Response {
 
-        if ($session->get('deck')) {
-            $deck = $session->get('deck');
-        } else {
-            $deck = new DeckOfCards();
-        }
+        $deck = new DeckOfCards();
 
         $deck->shuffleDeck();
+        $deckList = $deck->getCardList();
 
         $session->set('deck', $deck);
 
         $data = [
-            'shuffled-deck' => $deck,
+            'shuffled-deck' => $deckList
         ];
 
         $response = new JsonResponse($data);
@@ -56,8 +54,9 @@ class CardGameControllerJson
         return $response;
     }
 
-    #[Route('api/deck/draw/{amount}', name: 'api_draw', defaults: ['amount' => 1]) ]
+    #[Route('api/deck/draw/{amount}', name: 'api_draw', defaults: ['amount' => 1], methods: ['POST']) ]
     public function apiDraw(
+        Request $request,
         SessionInterface $session,
         int $amount
     ): Response {
@@ -69,8 +68,9 @@ class CardGameControllerJson
         }
 
         $hand = new CardHand();
+        $cardToDraw = $request->request->get('number');
 
-        $hand->takeCard($amount, $deck);
+        $hand->takeCard($cardToDraw, $deck);
         $handCardList = $hand->getHand();
         $cardsLeft = $deck->cardsLeft();
 

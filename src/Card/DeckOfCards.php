@@ -5,7 +5,9 @@ namespace App\Card;
 use App\Card\CardGraphic;
 
 class DeckOfCards
-{
+{   
+    private $cardList;
+
     public function __construct()
     {
         $family = ['Clover', 'Spade', 'Hearts', 'Diamond'];
@@ -28,8 +30,7 @@ class DeckOfCards
 
     public function shuffleDeck()
     {
-        uksort($this->cardList, function () { return rand() > rand(); });
-        ;
+        uksort($this->cardList, function () { return rand() > rand(); });;
     }
 
     public function takeCard()
