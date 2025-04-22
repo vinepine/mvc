@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="main">
+<h1 style="text-align: center;">Flödesdiagram</h1>
+<a href="{{asset('build/images/flowdiagram.jpg')}}">
+<img class="flow-diagram" src="{{asset('build/images/flowdiagram.jpg')}}">
+</a>
+<h1 style="text-align: center;">Psuedokod</h1>
+<code style="font-size: 2rem;">
+    START<br><br>
+    WHILE player NOT DONE AND NOT tjock<br>
+    &emsp;&emsp;deal cards to player<br><br>
+
+    WHILE bankscore < 17<br>
+    &emsp;&emsp;deal cards to bank<br><br>
+    
+    IF bankscore > playerscore OR player tjock<br>
+    &emsp;&emsp;PRINT('bank wins')<br>
+    ELSE<br>
+    &emsp;&emsp;PRINT('player wins)<br><br>
+    END<br>
+</code>
+
+<h1 style="text-align: center;">Klasser</h1>
+<div class="class-descript">
+<div>
+<h3>GameTwentyOne</h3>
+<p><span style="color:grey;">GameTwentyOne</span> är min main klass som har <span style="color:grey;">Player,
+ DeckOfCards </span> som kompositioner. Syftet med klassen är att ta hand om alla spelregler.</p>
+</div>
+<div>
+<h3>Player</h3>
+<p><span style="color:grey;">Player</span> är min klass som håller vilka kort den har med hjälp av <span style="color:grey;">CardHand</span> klassen, den innehåller också hur mycket poäng den har.</p>
+</div>
+</div>
+</div>
+{% endblock %}

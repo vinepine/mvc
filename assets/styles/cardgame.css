@@ -13,3 +13,69 @@
 .card-uml img {
     border-radius: 10px;
 }
+
+.flow-diagram {
+    border-radius: 5px;
+    border: 3px solid black;
+}
+.player {
+    padding: 5px;
+    background-color:rgb(219, 252, 221);
+    border: 3px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 321px;
+}
+.win-table {
+    text-align: center;
+    padding: 5px;
+    background-color:rgb(219, 252, 221);
+    border: 3px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 150px;
+}
+.game-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    margin-inline: 100px;
+}
+
+@media (max-width: 860px) {
+    .game-container {
+        flex-direction: column;
+        margin-inline: 0px;
+    }
+    .player {
+        min-width: 0px;
+    }
+}
+
+.class-descript {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+.game-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.game-button {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+}

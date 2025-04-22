@@ -58,17 +58,16 @@ class CardGameControllerJson
     public function apiDraw(
         Request $request,
         SessionInterface $session,
-        int $amount
     ): Response {
 
-        if ($session->get('deck')) {
-            $deck = $session->get('deck');
-        } else {
+        $deck = $session->get('deck');
+
+        if (!$deck) {
             $deck = new DeckOfCards();
         }
 
         $hand = new CardHand();
-        $cardToDraw = $request->request->get('number');
+        $cardToDraw = (int) $request->request->get('number');
 
         $hand->takeCard($cardToDraw, $deck);
         $handCardList = $hand->getHand();

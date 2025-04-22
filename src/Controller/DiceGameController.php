@@ -37,8 +37,7 @@ class DiceGameController extends AbstractController
     public function initCallback(
         Request $request,
         SessionInterface $session
-    ): Response 
-    {
+    ): Response {
         $numDice = $request->request->get('num_dices');
 
         $hand = new DiceHand();

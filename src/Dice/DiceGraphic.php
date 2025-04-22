@@ -6,7 +6,8 @@ use App\Dice\Dice;
 
 class DiceGraphic extends dice
 {
-    private $representation = [
+    /** @var string[] */
+    private array $representation = [
         '⚀',
         '⚁',
         '⚂',

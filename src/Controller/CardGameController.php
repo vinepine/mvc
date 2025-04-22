@@ -26,11 +26,13 @@ class CardGameController extends AbstractController
     public function renderDeck(
         SessionInterface $session
     ): Response {
-        if ($session->get('deck')) {
-            $deck = $session->get('deck');
-        } else {
+
+        $deck = $session->get('deck');
+        if (!$deck) {
             $deck = new DeckOfCards();
         }
+
+
 
         $deckList = $deck->getCardList();
 
@@ -70,13 +72,13 @@ class CardGameController extends AbstractController
         int $amount
     ): Response {
 
-        if ($session->get('deck')) {
-            $deck = $session->get('deck');
-            $hand = new CardHand();
-        } else {
+        $deck = $session->get('deck');
+
+        if (!$deck) {
             $deck = new DeckOfCards();
-            $hand = new CardHand();
         }
+
+        $hand = new CardHand();
 
         $hand->takeCard($amount, $deck);
 

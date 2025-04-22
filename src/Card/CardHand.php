@@ -6,26 +6,30 @@ use App\Card\DeckOfCards;
 
 class CardHand
 {
-    public $listOfCards;
+    /** @var Card[] */
+    public array $listOfCards;
     public function __construct()
     {
         $this->listOfCards = [];
     }
 
-    public function getHand()
+    /**
+     * @return Card[]
+     */
+    public function getHand(): array
     {
         return $this->listOfCards;
     }
 
-    public function takeCard($amount, $deck)
+    public function takeCard(int $amount, DeckOfCards $deck): void
     {
-        if ($deck->cardsLeft() > 0) {
-            for ($i = 0; $i < $amount; $i++) {
-                if ($deck->cardsLeft() === 0) {
-                    break;
-                }
-                $this->listOfCards[] = $deck->takeCard();
+
+        for ($i = 0; $i < $amount; $i++) {
+            if ($deck->cardsLeft() === 0) {
+                break;
             }
+            $this->listOfCards[] = $deck->takeCard();
         }
+
     }
 }

@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class SessionController extends AbstractController
 {
     #[Route('/session', name: 'session')]
-    public function session(SessionInterface $session)
+    public function session(SessionInterface $session): Response
     {
 
         $session = $session->all();
@@ -25,7 +25,7 @@ class SessionController extends AbstractController
     }
 
     #[Route('/session/delete', name: 'delete_session')]
-    public function deleteSession(SessionInterface $session)
+    public function deleteSession(SessionInterface $session): Response
     {
         $session->clear();
 

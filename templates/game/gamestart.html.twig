@@ -1,0 +1,43 @@
+{% extends ('base.html.twig') %}
+
+{% block body %}
+<div class="game-container">
+    <div class="player">
+        <h1>Spelare 1</h1>
+        <p> score: {{ currentScore[0] }}</p>
+        <p style="font-size: 4rem;">
+        {% for card in playerHandOne  %}
+            {{ card }}
+        {% endfor %}
+        </p>
+        {% if ( currentScore[0]  < 22 and next == 1) %}
+        <div class="game-buttons">
+        <form method="POST" action="{{ path('game_draw') }}">
+            <button class="game-button" type="submit" name="player" value="1">Draw</button>
+        </form>
+        <form method="POST" action="{{ path('game_done') }}">
+            <button class="game-button" type="submit" name="" value="1">End turn</button>
+        </form>
+        </div>
+        {% endif %}
+    </div>
+    
+    {% if ( gameOver ) %}
+    <div class="win-table">
+        <div class="">
+            <p> {{winner}} </p>
+            <button class="game-button" onClick="window.location = '{{path('game_restart')}}'">Restart</button>
+        </div>
+    </div>
+    {% endif %}
+    <div class="player">
+        <h1>Bank</h1>
+           <p> score: {{ currentScore[1] }}</p>
+        <p style="font-size: 4rem;">
+        {% for card in playerHandTwo  %}
+            {{ card }}
+        {% endfor %}
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -6,13 +6,18 @@ use App\Card\Card;
 
 class CardGraphic extends Card
 {
-    private $cardSpade;
-    private $cardHeart;
-    private $cardDiamond;
-    private $cardClover;
-    private $card;
+    /** @var string[] */
+    private array $cardSpade;
+    /** @var string[] */
+    private array $cardHeart;
+    /** @var string[] */
+    private array $cardDiamond;
+    /** @var string[] */
+    private array $cardClover;
 
-    public function __construct($number, $family)
+    private string $card;
+
+    public function __construct(int $number, string $family)
     {
         parent::__construct($number, $family);
 
@@ -22,7 +27,7 @@ class CardGraphic extends Card
         $this->cardClover = ['🃑', '🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃝', '🃞'];
     }
 
-    public function toString()
+    public function toString(): string
     {
         if ($this->family === 'Hearts') {
             $this->card = $this->cardHeart[$this->number - 1];

@@ -5,8 +5,11 @@ namespace App\Card;
 use App\Card\CardGraphic;
 
 class DeckOfCards
-{   
-    private $cardList;
+{
+    /**
+     * @var Card[]
+     */
+    private array $cardList;
 
     public function __construct()
     {
@@ -23,25 +26,33 @@ class DeckOfCards
         }
     }
 
-    public function getCardList()
+    /**
+     * @return Card[]
+     */
+    public function getCardList(): array
     {
         return $this->cardList;
     }
 
-    public function shuffleDeck()
+    public function shuffleDeck(): void
     {
-        uksort($this->cardList, function () { return rand() > rand(); });;
+        $keys = array_keys($this->cardList);
+        shuffle($keys);
+
+        $shuffled = [];
+        foreach ($keys as $key) {
+            $shuffled[$key] = $this->cardList[$key];
+        }
+        $this->cardList = $shuffled;
     }
 
-    public function takeCard()
+    public function takeCard(): Card
     {
         return array_pop($this->cardList);
     }
 
-    public function cardsLeft()
+    public function cardsLeft(): int
     {
         return count($this->cardList);
     }
-
-
 }
