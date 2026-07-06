@@ -12,12 +12,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
-class GameControllerJson extends AbstractController {
+class GameControllerJson extends AbstractController
+{
     #[Route('api/game', name: 'api_game')]
     public function apiGame(
         sessionInterface $session
-    ) {
+    ): Response {
 
         $game = $session->get('game');
         if (!$game) {
@@ -27,7 +27,7 @@ class GameControllerJson extends AbstractController {
         $playerOne = $game->getPlayerHand(1);
         $playerTwo = $game->getPlayerHand(2);
         $winner = 'No winner';
-        if ( $game->isOver() ) {
+        if ($game->isOver()) {
             $winner = $game->decideWinner();
         };
 

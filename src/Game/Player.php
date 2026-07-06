@@ -3,9 +3,11 @@
 namespace App\Game;
 
 use App\Card\CardHand;
+use App\Card\Card;
+use App\Card\DeckOfCards;
 
-class Player {
-
+class Player
+{
     private int $currentScore;
     private CardHand $hand;
 
@@ -15,30 +17,44 @@ class Player {
     {
         $this->hand = new CardHand();
         $this->currentScore = 0;
-        $this->stop = False;
+        $this->stop = false;
+
     }
 
-    public function getPlayerHand() 
+    /**
+     * @return Card[]
+     */
+    public function getPlayerHand(): array
     {
         return $this->hand->getHand();
     }
 
 
-    public function getScore() 
+    public function getScore(): int
     {
+
+
         return $this->currentScore;
     }
 
-    public function drawOne($deck): void
-    {   
+
+
+    public function drawOne(DeckOfCards $deck): void
+    {
 
         $this->hand->takeCard(1, $deck);
 
-        $cardList = $this->hand->getHand();
-
         $this->currentScore = 0;
-        foreach ($cardList as $card){
-            $this->currentScore += $card->number;
+        foreach ($this->hand->getHand() as $card) {
+            if ($card->number == 1) {
+                $this->currentScore += 14;
+                if ($this->currentScore > 21) {
+                    $this->currentScore -= 13;
+                }
+            } else {
+                $this->currentScore += $card->number;
+            }
+
         }
     }
 }

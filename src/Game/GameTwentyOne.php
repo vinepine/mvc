@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Game;
+
 use App\Card\DeckOfCards;
 use App\Game\Player;
 
-class GameTwentyOne {
-
+class GameTwentyOne
+{
     private DeckOfCards $deck;
     private Player $playerOne;
     private Player $playerTwo;
@@ -13,33 +14,39 @@ class GameTwentyOne {
 
     public bool $gameOver;
 
-    public function __construct() 
+    public function __construct()
     {
         $this->deck = new DeckOfCards();
         $this->deck->shuffleDeck();
         $this->playerOne = new Player();
         $this->playerTwo = new Player();
 
-        $this->gameOver = False;
+        $this->gameOver = false;
     }
 
-    public function bankAI() {
-        while ( $this->playerTwo->getScore() < 17 ) {
+    public function bankAI(): void
+    {
+        while ($this->playerTwo->getScore() < 17) {
             $this->playerTwo->drawOne($this->deck);
         }
     }
 
-    public function draw(int $number) {
-        if ( $number == 1 ) {
+    public function draw(int $number): void
+    {
+        if ($number == 1) {
             $this->playerOne->drawOne($this->deck);
         }
 
-        if ( $number == 2 ) {
+        if ($number == 2) {
             $this->playerTwo->drawOne($this->deck);
         }
     }
 
-    public function getPlayerHand(int $number) {
+    /**
+     * @return string[]
+     */
+    public function getPlayerHand(int $number): array
+    {
         if ($number == 1) {
 
             $cardList = [];
@@ -57,34 +64,45 @@ class GameTwentyOne {
         return $cardList;
     }
 
-    public function decideWinner() {
+    public function decideWinner(): string
+    {
         $playerOneScore = $this->playerOne->getScore();
         $playerTwoScore = $this->playerTwo->getScore();
 
-        if ( $playerOneScore > 21 ) {
+        if ($playerOneScore > 21) {
             $winner = 'Bank won';
-            $this->gameOver = True;
-        } elseif ( $playerOneScore < $playerTwoScore and $playerTwoScore < 22){
+            $this->gameOver = true;
+            return $winner;
+        } elseif ($playerOneScore < $playerTwoScore and $playerTwoScore < 22) {
             $winner = 'Bank won';
-            $this->gameOver = True;
-        } elseif ( $playerOneScore == $playerTwoScore ){
+            $this->gameOver = true;
+            return $winner;
+        } elseif ($playerOneScore == $playerTwoScore) {
             $winner = 'Bank won';
-            $this->gameOver = True;
-        } else {
-            $winner = 'Player 1 won';
-            $this->gameOver = True;
+            $this->gameOver = true;
+            return $winner;
         }
-        
+        $winner = 'Player 1 won';
+        $this->gameOver = true;
+
+
         return $winner;
     }
-    public function isOver() {
+    public function isOver(): bool
+    {
         return $this->gameOver;
     }
-    public function gameScore() {
+
+    /**
+     * @return int[]
+     */
+    public function gameScore(): array
+    {
         return [$this->playerOne->getScore(), $this->playerTwo->getScore()];
     }
-    
-    public function getDeck(){
+
+    public function getDeck(): DeckOfCards
+    {
         return $this->deck;
     }
 }

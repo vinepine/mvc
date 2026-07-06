@@ -1,6 +1,6 @@
 <?php
-namespace App\Controller;
 
+namespace App\Controller;
 
 use App\Game\GameTwentyOne;
 use App\Card\DeckOfCards;
@@ -15,8 +15,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class GameController extends AbstractController
 {
     #[Route('game/', name: 'game')]
-    public function startPage()
-    {   
+    public function startPage(): Response
+    {
         return $this->render('game/game.html.twig');
     }
 
@@ -24,15 +24,14 @@ class GameController extends AbstractController
     #[Route('game/start', name: 'game_start')]
     public function gameStart(
         sessionInterface $session
-    )
-    {
-        if (!$session->get('next')){
+    ): Response {
+        if (!$session->get('next')) {
             $session->set('next', 1);
         }
         $next = $session->get('next');
 
         $game = $session->get('game');
-        if (!$game){
+        if (!$game) {
             $game = new GameTwentyOne();
         }
 
@@ -62,7 +61,8 @@ class GameController extends AbstractController
     }
 
     #[Route('game/doc', name: 'game_doc')]
-    public function gameDocumentation() {
+    public function gameDocumentation(): Response
+    {
         return $this->render('game/doc.html.twig');
     }
 
@@ -70,10 +70,10 @@ class GameController extends AbstractController
     public function gameDraw(
         sessionInterface $session,
         Request $request
-    ){
+    ): Response {
         $game = $session->get('game');
 
-        if ( !$game ) {
+        if (!$game) {
             $game = new GameTwentyOne();
         }
 
@@ -83,31 +83,28 @@ class GameController extends AbstractController
 
         $session->set('game', $game);
 
-
         return $this->redirectToRoute('game_start');
     }
 
     #[Route('game/done', name: 'game_done', methods: ['POST'])]
     public function gameDone(
         sessionInterface $session,
-        Request $request
-    ) {
-        $game = $session->get('game');
+    ): Response {
 
         $session->set('next', 2);
 
         return $this->redirectToRoute('game_start');
     }
 
-    
+
 
     #[Route('game/restart', name: 'game_restart')]
     public function gameRestart(
         sessionInterface $session
-    ) {
+    ): Response {
         $session->clear();
 
         return $this->redirectToRoute('game_start');
     }
-    
+
 }
