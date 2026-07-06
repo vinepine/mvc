@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Card;
+namespace App\Model\Card;
 
 class Card
 {

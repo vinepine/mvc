@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Game;
+namespace App\Model\Game;
 
-use App\Card\DeckOfCards;
-use App\Game\Player;
+use App\Model\Card\DeckOfCards;
+use App\Model\Game\Player;
 
 class GameTwentyOne
 {

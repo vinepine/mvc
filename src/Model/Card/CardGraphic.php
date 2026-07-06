@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Card;
+namespace App\Model\Card;
 
-use App\Card\Card;
+use App\Model\Card\Card;
 
 class CardGraphic extends Card
 {

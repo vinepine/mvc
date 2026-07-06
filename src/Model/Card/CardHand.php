@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Card;
+namespace App\Model\Card;
 
-use App\Card\DeckOfCards;
+use App\Model\Card\DeckOfCards;
 
 class CardHand
 {

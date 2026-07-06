@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Dice\DiceGraphic;
-use App\Dice\DiceHand;
+use App\Model\Dice\DiceGraphic;
+use App\Model\Dice\DiceHand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

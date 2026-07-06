@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Game;
+namespace App\Model\Game;
 
-use App\Card\CardHand;
-use App\Card\Card;
-use App\Card\DeckOfCards;
+use App\Model\Card\CardHand;
+use App\Model\Card\Card;
+use App\Model\Card\DeckOfCards;
 
 class Player
 {

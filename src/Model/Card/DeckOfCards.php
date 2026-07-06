@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Card;
+namespace App\Model\Card;
 
-use App\Card\CardGraphic;
+use App\Model\Card\CardGraphic;
 
 class DeckOfCards
 {

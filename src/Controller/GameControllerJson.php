@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Game\GameTwentyOne;
-use App\Card\DeckOfCards;
+use App\Model\Game\GameTwentyOne;
+use App\Model\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
